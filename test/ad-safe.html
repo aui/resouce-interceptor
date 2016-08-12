@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../ad-safe.js"></script>
+    <script>
+        new adSafe(window, function(url, type) {
+            console.log(type, url);
+            return 'about:blank';
+        });
+    </script>
+
+    <script src="http://cdn.com/sync.js"></script>
+
+</head>
+<body>
+    <script>
+        var script = document.createElement('script');
+        script.src = 'http://cnd.com/async.js';
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>

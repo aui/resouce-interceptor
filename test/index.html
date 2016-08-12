@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../index.js"></script>
+    <script>
+        new ResouceInterceptor(window, function(url, type) {
+
+            if (type === 'script-src') {
+                console.log('重新映射', url, './console.js');
+                return './console.js';
+            }
+
+            return 'about:blank';
+        });
+    </script>
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="http://cdn.com/sync.js" onload="console.log('sync')"></script>
+
+</head>
+<body>
+    <script>
+        var script = document.createElement('script');
+        script.onload = function() {
+            console.log('async');
+        };
+        script.async = true;
+        script.src = 'http://cnd.com/async.js';
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
