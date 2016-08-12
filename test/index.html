@@ -12,6 +12,11 @@
                 return './console.js';
             }
 
+            if (type === 'img-src') {
+                console.log('拦截CSS图片', url);
+                return 'about:blank';
+            }
+
             return url;
         });
     </script>
